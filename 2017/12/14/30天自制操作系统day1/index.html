@@ -7,7 +7,7 @@
     
 
     <title>
-      使用异常反调试 | 一席春雨踏涟漪 
+      30天自制操作系统day1 | 一席春雨踏涟漪 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,17 +16,17 @@
     
     
 
-    <meta name="description" content="江南江北，最爱临风笛">
+    <meta name="description" content="许久未动，是时间捡回这本书和这个计划了。 今天的目标完成环境和第一课作者是纯db填充的第一课，对我来说还是要用汇编来完成，尽量不发图片，以文代图。 book:http://www.jb51.net/books/90585.htmlref:https://www.cnblogs.com/bitzhuwei/p/OS-in-30-days-01-hello-bitzhuwei-OS.htmldisk:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用异常反调试 | 一席春雨踏涟漪">
+<meta property="og:title" content="30天自制操作系统day1 | 一席春雨踏涟漪">
 <meta property="og:url" content="http://yoursite.com/2017/12/14/30天自制操作系统day1/index.html">
 <meta property="og:site_name" content="一席春雨踏涟漪">
-<meta property="og:description" content="江南江北，最爱临风笛">
+<meta property="og:description" content="许久未动，是时间捡回这本书和这个计划了。 今天的目标完成环境和第一课作者是纯db填充的第一课，对我来说还是要用汇编来完成，尽量不发图片，以文代图。 book:http://www.jb51.net/books/90585.htmlref:https://www.cnblogs.com/bitzhuwei/p/OS-in-30-days-01-hello-bitzhuwei-OS.htmldisk:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-14T02:11:10.238Z">
+<meta property="og:updated_time" content="2017-12-14T08:14:31.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用异常反调试 | 一席春雨踏涟漪">
-<meta name="twitter:description" content="江南江北，最爱临风笛">
+<meta name="twitter:title" content="30天自制操作系统day1 | 一席春雨踏涟漪">
+<meta name="twitter:description" content="许久未动，是时间捡回这本书和这个计划了。 今天的目标完成环境和第一课作者是纯db填充的第一课，对我来说还是要用汇编来完成，尽量不发图片，以文代图。 book:http://www.jb51.net/books/90585.htmlref:https://www.cnblogs.com/bitzhuwei/p/OS-in-30-days-01-hello-bitzhuwei-OS.htmldisk:">
     
     
     
@@ -150,7 +150,7 @@ classes that you can use:
 
   <header class="post-header">
     
-    <h1 class="post-title">使用异常反调试</h1>
+    <h1 class="post-title">30天自制操作系统day1</h1>
 
     
 
@@ -171,7 +171,17 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    
+    <p><em>许久未动，是时间捡回这本书和这个计划了。</em></p>
+<h2 id="今天的目标"><a href="#今天的目标" class="headerlink" title="今天的目标"></a>今天的目标</h2><p>完成环境和第一课<br>作者是纯db填充的第一课，对我来说还是要用汇编来完成，尽量不发图片，以文代图。</p>
+<p>book:<a href="http://www.jb51.net/books/90585.html" target="_blank" rel="noopener">http://www.jb51.net/books/90585.html</a><br>ref:<a href="https://www.cnblogs.com/bitzhuwei/p/OS-in-30-days-01-hello-bitzhuwei-OS.html" target="_blank" rel="noopener">https://www.cnblogs.com/bitzhuwei/p/OS-in-30-days-01-hello-bitzhuwei-OS.html</a><br>disk:<a href="https://pan.baidu.com/s/1c0f8Cus" target="_blank" rel="noopener">https://pan.baidu.com/s/1c0f8Cus</a></p>
+<p>编辑器用vscode吧，希望能搞定。</p>
+<p>day1的目标肯定是显示”hello world!”。<br>功能上来讲应该是调用int 0x10，其它注意的应该就是ORG 0x7c00;程序的载入点，bios载入镜像的起始点。</p>
+<p>来，写个代码</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;day1</span></span><br><span class="line">org <span class="number">0x7c00</span></span><br><span class="line"><span class="keyword">jmp</span> entry <span class="comment">;直接开始</span></span><br><span class="line"><span class="comment">;数据区域</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">0X90</span>       <span class="comment">;nop</span></span><br><span class="line"><span class="built_in">db</span> <span class="string">"HELLOIPL"</span>   <span class="comment">;厂商名称,8字节</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">512</span>        <span class="comment">;sector大小,512字节</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">1</span>          <span class="comment">;cluster大小</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">1</span>          <span class="comment">;fat start position</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">2</span>          <span class="comment">;fat amount</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">224</span>        <span class="comment">;root dir size</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">2880</span>       <span class="comment">;disk size 2880 sectors</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">0xf0</span>       <span class="comment">;disk type</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">9</span>          <span class="comment">;fat length</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">18</span>         <span class="comment">;1 track=18 sector</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">2</span>          <span class="comment">;磁头数</span></span><br><span class="line"><span class="built_in">dd</span> <span class="number">0</span>          <span class="comment">;无分区</span></span><br><span class="line"><span class="built_in">dd</span> <span class="number">2880</span>       <span class="comment">;rewrite disk size</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0x29</span></span><br><span class="line"><span class="built_in">dd</span> <span class="number">0xffffffff</span></span><br><span class="line"><span class="built_in">db</span> <span class="string">"HELLO-OS   "</span></span><br><span class="line"><span class="built_in">DB</span> <span class="string">"FAT12   "</span></span><br><span class="line"><span class="built_in">resb</span> <span class="number">18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;入口</span></span><br><span class="line"><span class="symbol">entry:</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">0x7c00</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">si</span>,msg</span><br><span class="line"></span><br><span class="line"><span class="symbol">putloop:</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">al</span>,[<span class="built_in">si</span>]</span><br><span class="line">    <span class="keyword">add</span> <span class="built_in">si</span>,<span class="number">1</span></span><br><span class="line">    <span class="keyword">cmp</span> <span class="built_in">al</span>,<span class="number">0</span></span><br><span class="line">    <span class="keyword">je</span>  fin</span><br><span class="line">    <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0x0e</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">15</span></span><br><span class="line">    <span class="keyword">int</span> <span class="number">0x10</span></span><br><span class="line">    <span class="keyword">jmp</span> putloop</span><br><span class="line"><span class="symbol">fin:</span></span><br><span class="line">    <span class="keyword">HLT</span></span><br><span class="line">    <span class="keyword">jmp</span> fin</span><br><span class="line"><span class="symbol">msg:</span></span><br><span class="line">    <span class="built_in">DB</span> <span class="number">0x0a</span>, <span class="number">0x0a</span></span><br><span class="line">    <span class="built_in">DB</span> <span class="string">"hello,world!"</span></span><br><span class="line">    <span class="built_in">db</span> <span class="number">0x0a</span></span><br><span class="line">    <span class="built_in">db</span> <span class="number">0</span>         <span class="comment">;这个零作为结束标志</span></span><br><span class="line">    <span class="built_in">resb</span> <span class="number">0x01fe</span>-$<span class="comment">;填充,这里原文不对</span></span><br><span class="line">    <span class="built_in">db</span> <span class="number">0x55</span>,<span class="number">0xaa</span> <span class="comment">;0x7c00-0x7dff启动区</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">db</span> <span class="number">0xf0</span>,<span class="number">0xff</span>,<span class="number">0xff</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span></span><br><span class="line"><span class="built_in">resb</span> <span class="number">4600</span></span><br><span class="line">rb <span class="number">0xf0</span>,<span class="number">0xff</span>,<span class="number">0xff</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span></span><br><span class="line"><span class="built_in">resb</span> <span class="number">1469432</span>   <span class="comment">;填充完整个软盘</span></span><br></pre></td></tr></table></figure>
+<p>ref:<a href="http://dietomorrow.blog.163.com/blog/static/212272210201332031644783/" target="_blank" rel="noopener">http://dietomorrow.blog.163.com/blog/static/212272210201332031644783/</a></p>
+<p>就是按照FAT12引导扇区的结构来。</p>
+<p>emmmm…还是留下了4600的问题，搞清楚回来补充</p>
+
   </section>
 
   <section class="post-comments">
