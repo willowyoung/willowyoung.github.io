@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      tinyhttpd解析 | 一席春雨踏涟漪 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Willow Young">
+    
+    
+
+    <meta name="description" content="http协议以下皆引用自rfc2616  HTTP communication usually takes place over TCP/IP connections.  HTTP 通讯常通过TCP/IP连接进行  http_URL = “http:” “//“ host [ “:” port ] [ abs_path [ “?” query ]]  http_URL格式，重点在问号  The M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tinyhttpd解析 | 一席春雨踏涟漪">
+<meta property="og:url" content="http://yoursite.com/2017/12/21/tinyhttpd解析/index.html">
+<meta property="og:site_name" content="一席春雨踏涟漪">
+<meta property="og:description" content="http协议以下皆引用自rfc2616  HTTP communication usually takes place over TCP/IP connections.  HTTP 通讯常通过TCP/IP连接进行  http_URL = “http:” “//“ host [ “:” port ] [ abs_path [ “?” query ]]  http_URL格式，重点在问号  The M">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-21T03:24:17.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tinyhttpd解析 | 一席春雨踏涟漪">
+<meta name="twitter:description" content="http协议以下皆引用自rfc2616  HTTP communication usually takes place over TCP/IP connections.  HTTP 通讯常通过TCP/IP连接进行  http_URL = “http:” “//“ host [ “:” port ] [ abs_path [ “?” query ]]  http_URL格式，重点在问号  The M">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">一席春雨踏涟漪</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">tinyhttpd解析</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-21" class="post-meta__date date">2017-12-21</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h2 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h2><p>以下皆引用自rfc2616</p>
+<blockquote>
+<p>HTTP communication usually takes place over TCP/IP connections.</p>
+</blockquote>
+<p>HTTP 通讯常通过TCP/IP连接进行</p>
+<blockquote>
+<p>http_URL = “http:” “//“ host [ “:” port ] [ abs_path [ “?” query ]]</p>
+</blockquote>
+<p>http_URL格式，重点在问号</p>
+<blockquote>
+<p>The Method  token indicates the method to be performed on the<br>   resource identified by the Request-URI. The method is case-sensitive.</p>
+</blockquote>
+<p>http方法，代码只实现了GET,POST</p>
+<pre><code>Method         = &quot;OPTIONS&quot;                ; Section 9.2
+               | &quot;GET&quot;                    ; Section 9.3
+               | &quot;HEAD&quot;                   ; Section 9.4
+               | &quot;POST&quot;                   ; Section 9.5
+               | &quot;PUT&quot;                    ; Section 9.6
+               | &quot;DELETE&quot;                 ; Section 9.7
+               | &quot;TRACE&quot;                  ; Section 9.8
+               | &quot;CONNECT&quot;                ; Section 9.9
+               | extension-method
+extension-method = token
+</code></pre><p> 状态码，代码实现了200，400，404，500，501<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Status-Code    =  </span><br><span class="line">          <span class="string">| "</span><span class="number">100</span><span class="string">"  ; Section 10.1.1: Continue</span></span><br><span class="line">          <span class="string">| "</span><span class="number">101</span><span class="string">"  ; Section 10.1.2: Switching Protocols</span></span><br><span class="line">          <span class="string">| "</span><span class="number">200</span><span class="string">"  ; Section 10.2.1: OK</span></span><br><span class="line">          <span class="string">| "</span><span class="number">201</span><span class="string">"  ; Section 10.2.2: Created</span></span><br><span class="line">          <span class="string">| "</span><span class="number">202</span><span class="string">"  ; Section 10.2.3: Accepted</span></span><br><span class="line">          <span class="string">| "</span><span class="number">203</span><span class="string">"  ; Section 10.2.4: Non-Authoritative Information</span></span><br><span class="line">          <span class="string">| "</span><span class="number">204</span><span class="string">"  ; Section 10.2.5: No Content</span></span><br><span class="line">          <span class="string">| "</span><span class="number">205</span><span class="string">"  ; Section 10.2.6: Reset Content</span></span><br><span class="line">          <span class="string">| "</span><span class="number">206</span><span class="string">"  ; Section 10.2.7: Partial Content</span></span><br><span class="line">          <span class="string">| "</span><span class="number">300</span><span class="string">"  ; Section 10.3.1: Multiple Choices</span></span><br><span class="line">          <span class="string">| "</span><span class="number">301</span><span class="string">"  ; Section 10.3.2: Moved Permanently</span></span><br><span class="line">          <span class="string">| "</span><span class="number">302</span><span class="string">"  ; Section 10.3.3: Found</span></span><br><span class="line">          <span class="string">| "</span><span class="number">303</span><span class="string">"  ; Section 10.3.4: See Other</span></span><br><span class="line">          <span class="string">| "</span><span class="number">304</span><span class="string">"  ; Section 10.3.5: Not Modified</span></span><br><span class="line">          <span class="string">| "</span><span class="number">305</span><span class="string">"  ; Section 10.3.6: Use Proxy</span></span><br><span class="line">          <span class="string">| "</span><span class="number">307</span><span class="string">"  ; Section 10.3.8: Temporary Redirect</span></span><br><span class="line">          <span class="string">| "</span><span class="number">400</span><span class="string">"  ; Section 10.4.1: Bad Request</span></span><br><span class="line">          <span class="string">| "</span><span class="number">401</span><span class="string">"  ; Section 10.4.2: Unauthorized</span></span><br><span class="line">          <span class="string">| "</span><span class="number">402</span><span class="string">"  ; Section 10.4.3: Payment Required</span></span><br><span class="line">          <span class="string">| "</span><span class="number">403</span><span class="string">"  ; Section 10.4.4: Forbidden</span></span><br><span class="line">          <span class="string">| "</span><span class="number">404</span><span class="string">"  ; Section 10.4.5: Not Found</span></span><br><span class="line">          <span class="string">| "</span><span class="number">405</span><span class="string">"  ; Section 10.4.6: Method Not Allowed</span></span><br><span class="line">          <span class="string">| "</span><span class="number">406</span><span class="string">"  ; Section 10.4.7: Not Acceptable</span></span><br><span class="line">          <span class="string">| "</span><span class="number">407</span><span class="string">"  ; Section 10.4.8: Proxy Authentication Required</span></span><br><span class="line">          <span class="string">| "</span><span class="number">408</span><span class="string">"  ; Section 10.4.9: Request Time-out</span></span><br><span class="line">          <span class="string">| "</span><span class="number">409</span><span class="string">"  ; Section 10.4.10: Conflict</span></span><br><span class="line">          <span class="string">| "</span><span class="number">410</span><span class="string">"  ; Section 10.4.11: Gone</span></span><br><span class="line">          <span class="string">| "</span><span class="number">411</span><span class="string">"  ; Section 10.4.12: Length Required</span></span><br><span class="line">          <span class="string">| "</span><span class="number">412</span><span class="string">"  ; Section 10.4.13: Precondition Failed</span></span><br><span class="line">          <span class="string">| "</span><span class="number">413</span><span class="string">"  ; Section 10.4.14: Request Entity Too Large</span></span><br><span class="line">          <span class="string">| "</span><span class="number">414</span><span class="string">"  ; Section 10.4.15: Request-URI Too Large</span></span><br><span class="line">          <span class="string">| "</span><span class="number">415</span><span class="string">"  ; Section 10.4.16: Unsupported Media Type</span></span><br><span class="line">          <span class="string">| "</span><span class="number">416</span><span class="string">"  ; Section 10.4.17: Requested range not satisfiable</span></span><br><span class="line">          <span class="string">| "</span><span class="number">417</span><span class="string">"  ; Section 10.4.18: Expectation Failed</span></span><br><span class="line">          <span class="string">| "</span><span class="number">500</span><span class="string">"  ; Section 10.5.1: Internal Server Error</span></span><br><span class="line">          <span class="string">| "</span><span class="number">501</span><span class="string">"  ; Section 10.5.2: Not Implemented</span></span><br><span class="line">          <span class="string">| "</span><span class="number">502</span><span class="string">"  ; Section 10.5.3: Bad Gateway</span></span><br><span class="line">          <span class="string">| "</span><span class="number">503</span><span class="string">"  ; Section 10.5.4: Service Unavailable</span></span><br><span class="line">          <span class="string">| "</span><span class="number">504</span><span class="string">"  ; Section 10.5.5: Gateway Time-out</span></span><br><span class="line">          <span class="string">| "</span><span class="number">505</span><span class="string">"  ; Section 10.5.6: HTTP Version not supported</span></span><br><span class="line">          <span class="string">| extension-code</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>   The Content-Type entity-header field indicates the media type of<br>the    entity-body sent to the recipient or, in the case of the HEAD<br>method,    the media type that would have been sent had the request<br>been a GET.</p>
+<pre><code>Content-Type   = &quot;Content-Type&quot; &quot;:&quot; media-type
+</code></pre><p>   Media types are defined in section 3.7. An example of the field is</p>
+<pre><code>Content-Type: text/html; charset=ISO-8859-4
+</code></pre></blockquote>
+<h2 id="tinyhttpd"><a href="#tinyhttpd" class="headerlink" title="tinyhttpd"></a>tinyhttpd</h2><p>rfc2616是1999年头发布的，该代码写于1999年底，是一个小型的http服务器。</p>
+<h3 id="代码流程"><a href="#代码流程" class="headerlink" title="代码流程"></a>代码流程</h3><p>|main—–tcp port—–accept—–pthread_create—–exit<br>|………………………………^—————-|<br>|…………………………………………………|<br>|……………………………………….accept_request<br>|………………………………………../…………………\<br>|……………………………………… /…………………..\<br>|……………………………………GET………………POST<br>|………………………………………|…………………….|<br>|……………………………………….\…………………../<br>|…………………………………………\………………./<br>|……………………………………..cgi == 0 || cgi == 1<br>|…………………………………………/………………..\<br>|………………………………………../………………….\<br>|……………………………….serve_file………….  execute_cgi</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
