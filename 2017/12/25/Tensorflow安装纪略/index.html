@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="一席春雨踏涟漪">
 <meta property="og:description" content="配备了i7和gtx1080的台式机购置了许久，吃鸡吃得不亦乐乎，Tensorflow却丝毫未动，真是叹于自己的怠惰，打定心思，正好年前上Kaggle学习，Tensorflow也该就位了。 操作系统在公司用centos，评论界多用ubuntu，而我独爱mint，毫不犹豫在win10基础上装双系统。很久之前踩过grub引导的坑，所以决定不用grub引导win10。网上有教程使用easyBCD引导，正遂">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-25T02:23:09.047Z">
+<meta property="og:updated_time" content="2017-12-25T02:25:53.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow安装纪略 | 一席春雨踏涟漪">
 <meta name="twitter:description" content="配备了i7和gtx1080的台式机购置了许久，吃鸡吃得不亦乐乎，Tensorflow却丝毫未动，真是叹于自己的怠惰，打定心思，正好年前上Kaggle学习，Tensorflow也该就位了。 操作系统在公司用centos，评论界多用ubuntu，而我独爱mint，毫不犹豫在win10基础上装双系统。很久之前踩过grub引导的坑，所以决定不用grub引导win10。网上有教程使用easyBCD引导，正遂">
@@ -180,7 +180,7 @@ classes that you can use:
 <li>系统一定要装至/boot，千万别覆盖win10，切记</li>
 <li>装完进win10用easyBCD添加引导即可</li>
 </ul>
-<h2 id="Python环境"><a href="#Python环境" class="headerlink" title="Python环境"></a>Python环境</h2><p>进mint之后竟然自动识别i7和nvidia，选择驱动安装。<br>python当然还是anaconda方便，官方已是python3.6版本，tensorflow还在3.5，小版本无所畏惧，装之。<br>但是没有anaconda-navigator桌面快捷方式，造之，不顺利，半天才搞清楚要制定是x-python应用。<br>试用jupyter lab，手感甚佳。</p>
+<h2 id="Python环境"><a href="#Python环境" class="headerlink" title="Python环境"></a>Python环境</h2><p>进mint之后竟然自动识别i7和nvidia，选择驱动安装。<br>python当然还是anaconda方便，官方已是python3.6版本，tensorflow还在3.5，小版本无所畏惧，装之。<br>但是没有anaconda-navigator桌面快捷方式，造之，不顺利，半天才搞清楚要指定是x-python应用。<br>试用jupyter lab，手感甚佳。</p>
 <h2 id="显卡"><a href="#显卡" class="headerlink" title="显卡"></a>显卡</h2><p>使用显卡果然并不能手到擒来。<br>先装cuda9.1以及对应cudnn，无果。<br>apt-get安装，而后又卸载重装，无果。<br>终究领悟，重启，<br>nvidia-smi得之。<br>apt-get安装的tensorflow无法使用gpu，还是得编译。<br>bazel的安装顺利。./configure注意尽量选no，特别注意不要用clang编译，使用gcc即可。<br>然后漫长的编译得到deb包，安装即可。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>平安夜正好对苹果图片做了梵高化。</p>
 <ul>
