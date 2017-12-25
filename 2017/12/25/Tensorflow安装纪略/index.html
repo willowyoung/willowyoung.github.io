@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Tensorflow安装纪略 | 一席春雨踏涟漪 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Willow Young">
+    
+    
+
+    <meta name="description" content="配备了i7和gtx1080的台式机购置了许久，吃鸡吃得不亦乐乎，Tensorflow却丝毫未动，真是叹于自己的怠惰，打定心思，正好年前上Kaggle学习，Tensorflow也该就位了。 操作系统在公司用centos，评论界多用ubuntu，而我独爱mint，毫不犹豫在win10基础上装双系统。很久之前踩过grub引导的坑，所以决定不用grub引导win10。网上有教程使用easyBCD引导，正遂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensorflow安装纪略 | 一席春雨踏涟漪">
+<meta property="og:url" content="http://yoursite.com/2017/12/25/Tensorflow安装纪略/index.html">
+<meta property="og:site_name" content="一席春雨踏涟漪">
+<meta property="og:description" content="配备了i7和gtx1080的台式机购置了许久，吃鸡吃得不亦乐乎，Tensorflow却丝毫未动，真是叹于自己的怠惰，打定心思，正好年前上Kaggle学习，Tensorflow也该就位了。 操作系统在公司用centos，评论界多用ubuntu，而我独爱mint，毫不犹豫在win10基础上装双系统。很久之前踩过grub引导的坑，所以决定不用grub引导win10。网上有教程使用easyBCD引导，正遂">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-25T02:23:09.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tensorflow安装纪略 | 一席春雨踏涟漪">
+<meta name="twitter:description" content="配备了i7和gtx1080的台式机购置了许久，吃鸡吃得不亦乐乎，Tensorflow却丝毫未动，真是叹于自己的怠惰，打定心思，正好年前上Kaggle学习，Tensorflow也该就位了。 操作系统在公司用centos，评论界多用ubuntu，而我独爱mint，毫不犹豫在win10基础上装双系统。很久之前踩过grub引导的坑，所以决定不用grub引导win10。网上有教程使用easyBCD引导，正遂">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">一席春雨踏涟漪</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Tensorflow安装纪略</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-25" class="post-meta__date date">2017-12-25</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>配备了i7和gtx1080的台式机购置了许久，吃鸡吃得不亦乐乎，Tensorflow却丝毫未动，真是叹于自己的怠惰，打定心思，正好年前上Kaggle学习，Tensorflow也该就位了。</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>在公司用centos，评论界多用ubuntu，而我独爱mint，毫不犹豫在win10基础上装双系统。很久之前踩过grub引导的坑，所以决定不用grub引导win10。网上有教程使用easyBCD引导，正遂我意。</p>
+<ul>
+<li>win10磁盘管理压缩卷，分100G</li>
+<li>ultraiso将mint映像烧至U盘</li>
+<li>boot至U盘，将100G分至/,/boot,swap,/usr,/tmp等目录，注意主分区不能多选，建议全用逻辑分区</li>
+<li>系统一定要装至/boot，千万别覆盖win10，切记</li>
+<li>装完进win10用easyBCD添加引导即可</li>
+</ul>
+<h2 id="Python环境"><a href="#Python环境" class="headerlink" title="Python环境"></a>Python环境</h2><p>进mint之后竟然自动识别i7和nvidia，选择驱动安装。<br>python当然还是anaconda方便，官方已是python3.6版本，tensorflow还在3.5，小版本无所畏惧，装之。<br>但是没有anaconda-navigator桌面快捷方式，造之，不顺利，半天才搞清楚要制定是x-python应用。<br>试用jupyter lab，手感甚佳。</p>
+<h2 id="显卡"><a href="#显卡" class="headerlink" title="显卡"></a>显卡</h2><p>使用显卡果然并不能手到擒来。<br>先装cuda9.1以及对应cudnn，无果。<br>apt-get安装，而后又卸载重装，无果。<br>终究领悟，重启，<br>nvidia-smi得之。<br>apt-get安装的tensorflow无法使用gpu，还是得编译。<br>bazel的安装顺利。./configure注意尽量选no，特别注意不要用clang编译，使用gcc即可。<br>然后漫长的编译得到deb包，安装即可。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>平安夜正好对苹果图片做了梵高化。</p>
+<ul>
+<li>tensorflow对python3.6环境有warn</li>
+<li>执行前对编译选项有warn</li>
+<li>实测cuda9.1可用，无须使用9.0甚至8.0</li>
+<li>强如1080也跑不了太大的图片，显存消耗极大</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
