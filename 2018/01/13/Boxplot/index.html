@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Boxplot | 一席春雨踏涟漪 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Willow Young">
+    
+    
+
+    <meta name="description" content="Boxplot，箱型图，又称为盒须图、盒式图、盒状图或箱线图。1977年美国数学家John Tukey发明。基础理论就是算五个数：首先，算Q1（下四分位数），Q2（mid，中位数），Q3（上四分位数）计算方法：先算位置P1=(总数量+1)*0.25P2=(总数量+1)*0.5P3=(总数量+1)*0.75 然后如果有小数，取左右加权Qx=f(〔Px〕) * (Px-〔Px〕)+f(〔Px〕+1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boxplot | 一席春雨踏涟漪">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/Boxplot/index.html">
+<meta property="og:site_name" content="一席春雨踏涟漪">
+<meta property="og:description" content="Boxplot，箱型图，又称为盒须图、盒式图、盒状图或箱线图。1977年美国数学家John Tukey发明。基础理论就是算五个数：首先，算Q1（下四分位数），Q2（mid，中位数），Q3（上四分位数）计算方法：先算位置P1=(总数量+1)*0.25P2=(总数量+1)*0.5P3=(总数量+1)*0.75 然后如果有小数，取左右加权Qx=f(〔Px〕) * (Px-〔Px〕)+f(〔Px〕+1)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-13T02:58:30.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Boxplot | 一席春雨踏涟漪">
+<meta name="twitter:description" content="Boxplot，箱型图，又称为盒须图、盒式图、盒状图或箱线图。1977年美国数学家John Tukey发明。基础理论就是算五个数：首先，算Q1（下四分位数），Q2（mid，中位数），Q3（上四分位数）计算方法：先算位置P1=(总数量+1)*0.25P2=(总数量+1)*0.5P3=(总数量+1)*0.75 然后如果有小数，取左右加权Qx=f(〔Px〕) * (Px-〔Px〕)+f(〔Px〕+1)">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">一席春雨踏涟漪</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Boxplot</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-01-13" class="post-meta__date date">2018-01-13</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>Boxplot，箱型图，又称为盒须图、盒式图、盒状图或箱线图。<br>1977年美国数学家John Tukey发明。<br>基础理论就是算五个数：<br>首先，算<br>Q1（下四分位数），Q2（mid，中位数），Q3（上四分位数）<br>计算方法：<br>先算位置<br>P1=(总数量+1)*0.25<br>P2=(总数量+1)*0.5<br>P3=(总数量+1)*0.75</p>
+<p>然后如果有小数，取左右加权<br>Qx=f(〔Px〕) * (Px-〔Px〕)+f(〔Px〕+1) *（Px+1-〔Px〕）</p>
+<p>python中pandas用quantile函数计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;testdata=pd.DataFrame()</span><br><span class="line">&gt;testdata[<span class="string">"test1"</span>][<span class="number">1</span>,<span class="number">32</span>,<span class="number">43</span>,<span class="number">23</span>,<span class="number">34</span>,<span class="number">45</span>,<span class="number">45</span>,<span class="number">23</span>,<span class="number">99</span>,<span class="number">67</span>,<span class="number">234</span>,<span class="number">23</span>]</span><br><span class="line">&gt;sorted(testdata[<span class="string">"test1"</span>])</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">32</span>, <span class="number">34</span>, <span class="number">43</span>, <span class="number">45</span>, <span class="number">45</span>, <span class="number">67</span>, <span class="number">99</span>, <span class="number">234</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;testdata[<span class="string">"test1"</span>].quantile([<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">0.75</span>])</span><br><span class="line"></span><br><span class="line"><span class="number">0.25</span>    <span class="number">23.0</span></span><br><span class="line"><span class="number">0.50</span>    <span class="number">38.5</span></span><br><span class="line"><span class="number">0.75</span>    <span class="number">50.5</span></span><br><span class="line">Name: test1, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>然后，四分位间距，interquartile range，IQR=Q3-Q1，或者叫ΔQ，这个也就是box的宽度。<br>确认正常值范围<br>[Q1-1.5IQR,Q3+1.5IQR]<br>取正常值范围的最小值为minimum，最大值为maximum</p>
+<p>参考 <a href="https://zh.wikipedia.org/wiki/%E7%AE%B1%E5%BD%A2%E5%9C%96" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%AE%B1%E5%BD%A2%E5%9C%96</a></p>
+<p>plt的boxplot绘制箱型图，whis参数常用1.5。</p>
+<p>超出正常范围的值称outlier。</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
