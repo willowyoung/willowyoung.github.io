@@ -7,7 +7,7 @@
     
 
     <title>
-      归档: 2018/1 
+      JSON是如何优雅地表示数据的 | 一席春雨踏涟漪 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,16 +16,23 @@
     
     
 
-    <meta name="description" content="江南江北，最爱临风笛">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档: 2018&#x2F;1">
-<meta property="og:url" content="http://yoursite.com/archives/2018/01/index.html">
+    <meta name="description" content="用了这么久的json，也没有刻意学过，似乎也不需要去学。一切都很自然。 今天看看JSON如何做到优雅。一、json的数据基于两种结构  key:velue 有序集合,也就是array  这是整个计算机领域最通用的两种结构了。 二、形式  object   array   value   string   number  光是这些简洁优雅的图片就足以欣赏很久了。 三、总结想想为什么json的使用这么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSON是如何优雅地表示数据的 | 一席春雨踏涟漪">
+<meta property="og:url" content="http://yoursite.com/2018/02/01/JSON是如何优雅地表示数据的/index.html">
 <meta property="og:site_name" content="一席春雨踏涟漪">
-<meta property="og:description" content="江南江北，最爱临风笛">
+<meta property="og:description" content="用了这么久的json，也没有刻意学过，似乎也不需要去学。一切都很自然。 今天看看JSON如何做到优雅。一、json的数据基于两种结构  key:velue 有序集合,也就是array  这是整个计算机领域最通用的两种结构了。 二、形式  object   array   value   string   number  光是这些简洁优雅的图片就足以欣赏很久了。 三、总结想想为什么json的使用这么">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.json.org/object.gif">
+<meta property="og:image" content="http://www.json.org/array.gif">
+<meta property="og:image" content="http://www.json.org/value.gif">
+<meta property="og:image" content="http://www.json.org/string.gif">
+<meta property="og:image" content="http://www.json.org/number.gif">
+<meta property="og:updated_time" content="2018-02-01T01:12:59.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="归档: 2018&#x2F;1">
-<meta name="twitter:description" content="江南江北，最爱临风笛">
+<meta name="twitter:title" content="JSON是如何优雅地表示数据的 | 一席春雨踏涟漪">
+<meta name="twitter:description" content="用了这么久的json，也没有刻意学过，似乎也不需要去学。一切都很自然。 今天看看JSON如何做到优雅。一、json的数据基于两种结构  key:velue 有序集合,也就是array  这是整个计算机领域最通用的两种结构了。 二、形式  object   array   value   string   number  光是这些简洁优雅的图片就足以欣赏很久了。 三、总结想想为什么json的使用这么">
+<meta name="twitter:image" content="http://www.json.org/object.gif">
     
     
     
@@ -145,137 +152,74 @@ classes that you can use:
         <div class="content-wrapper__inner entry">
             
 
+<article class="post-container post-container--single">
 
-  <h1 class="archive-title">归档: 2018/1</h1>
-  <hr class="post-list__divider" />
-
-
-<div class="main-post-list">
-    <ol class="post-list">
+  <header class="post-header">
     
-    
-    <li>
+    <h1 class="post-title">JSON是如何优雅地表示数据的</h1>
 
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/19/悲剧是最美的/" title="link to 悲剧是最美的">悲剧是最美的</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-19" class="post-list__meta--date date">2018-01-19</time> 
-      </div>
-
-      <div class="excerpt">
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/18/读《人月神话》下/" title="link to 读《人月神话》下">读《人月神话》下</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-18" class="post-list__meta--date date">2018-01-18</time> 
-      </div>
-
-      <div class="excerpt">
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/17/读《人月神话》-中/" title="link to 读《人月神话》(中)">读《人月神话》(中)</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-17" class="post-list__meta--date date">2018-01-17</time> 
-      </div>
-
-      <div class="excerpt">
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/16/读《人月神话》-上/" title="link to 读《人月神话》(上)">读《人月神话》(上)</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-16" class="post-list__meta--date date">2018-01-16</time> 
-      </div>
-
-      <div class="excerpt">
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/13/Boxplot/" title="link to Boxplot">Boxplot</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-13" class="post-list__meta--date date">2018-01-13</time> 
-      </div>
-
-      <div class="excerpt">
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2018/01/11/冬日漫步/" title="link to 冬日漫步">冬日漫步</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2018-01-11" class="post-list__meta--date date">2018-01-11</time> 
-      </div>
-
-      <div class="excerpt">
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-  </ol>
-
-  <hr class="post-list__divider " />
-
-<nav class="pagination" role="navigation">
     
 
-    <span class="pagination__page-number"> 1 / 1</span>
+    <div class="post-meta">
+      <time datetime="2018-02-01" class="post-meta__date date">2018-02-01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
     
     
-</nav>
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>用了这么久的json，也没有刻意学过，似乎也不需要去学。<br>一切都很自然。</p>
+<p>今天看看JSON如何做到优雅。<br>一、json的数据基于两种结构</p>
+<ul>
+<li>key:velue</li>
+<li>有序集合,也就是array</li>
+</ul>
+<p>这是整个计算机领域最通用的两种结构了。</p>
+<p>二、形式</p>
+<ul>
+<li>object<br><img src="http://www.json.org/object.gif" alt="enter description here"></li>
+</ul>
+<ul>
+<li>array<br><img src="http://www.json.org/array.gif" alt="enter description here"></li>
+</ul>
+<ul>
+<li>value<br><img src="http://www.json.org/value.gif" alt="enter description here"></li>
+</ul>
+<ul>
+<li>string<br><img src="http://www.json.org/string.gif" alt="enter description here"></li>
+</ul>
+<ul>
+<li>number<br><img src="http://www.json.org/number.gif" alt="enter description here"></li>
+</ul>
+<p>光是这些简洁优雅的图片就足以欣赏很久了。</p>
+<p>三、总结<br>想想为什么json的使用这么自然，因为：</p>
+<ul>
+<li>格式使用了C系列的习惯</li>
+<li>最通用的元素</li>
+<li>简洁却足以表示一切</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
 
 
-</div>
+</article>
+
+
             <footer class="footer">
 
     <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
@@ -303,6 +247,18 @@ classes that you can use:
 
 
     
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
     
     
     <!--kill ie6 -->
