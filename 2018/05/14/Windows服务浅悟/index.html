@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Windows服务浅悟 | 一席春雨踏涟漪 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Willow Young">
+    
+    
+
+    <meta name="description" content="前言最近在用C#写客户端，感叹一下，C#的发展真是到了一个新的境界。.net core 2.0之后，它的发展已经步入正轨。这次用来实现windows服务的组件是Topshelf。在win7上很稳定，win10还是有些瑕疵。 UACuac真的是一个好东西。给用户安全添加了一层保障。but。。。。。。服务的启动方式是localsystem，帐号是system，跑在session 0下面。问题接踵而来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows服务浅悟 | 一席春雨踏涟漪">
+<meta property="og:url" content="http://yoursite.com/2018/05/14/Windows服务浅悟/index.html">
+<meta property="og:site_name" content="一席春雨踏涟漪">
+<meta property="og:description" content="前言最近在用C#写客户端，感叹一下，C#的发展真是到了一个新的境界。.net core 2.0之后，它的发展已经步入正轨。这次用来实现windows服务的组件是Topshelf。在win7上很稳定，win10还是有些瑕疵。 UACuac真的是一个好东西。给用户安全添加了一层保障。but。。。。。。服务的启动方式是localsystem，帐号是system，跑在session 0下面。问题接踵而来。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-14T09:41:11.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows服务浅悟 | 一席春雨踏涟漪">
+<meta name="twitter:description" content="前言最近在用C#写客户端，感叹一下，C#的发展真是到了一个新的境界。.net core 2.0之后，它的发展已经步入正轨。这次用来实现windows服务的组件是Topshelf。在win7上很稳定，win10还是有些瑕疵。 UACuac真的是一个好东西。给用户安全添加了一层保障。but。。。。。。服务的启动方式是localsystem，帐号是system，跑在session 0下面。问题接踵而来。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">一席春雨踏涟漪</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Windows服务浅悟</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2018-05-14" class="post-meta__date date">2018-05-14</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在用C#写客户端，感叹一下，C#的发展真是到了一个新的境界。.net core 2.0之后，它的发展已经步入正轨。<br>这次用来实现windows服务的组件是Topshelf。<br>在win7上很稳定，win10还是有些瑕疵。</p>
+<h1 id="UAC"><a href="#UAC" class="headerlink" title="UAC"></a>UAC</h1><p>uac真的是一个好东西。给用户安全添加了一层保障。<br>but。。。。。。<br>服务的启动方式是localsystem，帐号是system，跑在session 0下面。<br>问题接踵而来。</p>
+<ul>
+<li>session 0的程序是没有界面的。</li>
+</ul>
+<p>这意味着服务直接start一个process的话，这个process也是没有界面的。</p>
+<ul>
+<li>以用户帐号启动进程的话，需要UAC的进程会弹UAC窗口。</li>
+</ul>
+<p>UAC窗口在用system帐号启动的情况下不弹。</p>
+<h1 id="CreateProcessAsUser"><a href="#CreateProcessAsUser" class="headerlink" title="CreateProcessAsUser"></a>CreateProcessAsUser</h1><p>这个函数是windows服务用来做uac bypass的通用选择了。</p>
+<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><ul>
+<li>用winlogon或者explorer的token来作为进程的token。</li>
+<li>在Startup Info里面指定正确窗口</li>
+<li>这样跑起来的进程还是system账户</li>
+<li>可以用explorer进程去开一个url，这样浏览器就在用户账户。</li>
+</ul>
+<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
+<li><a href="https://www.codeproject.com/Questions/1121476/How-to-run-external-exe-from-windows-service-in-Cs" target="_blank" rel="noopener">https://www.codeproject.com/Questions/1121476/How-to-run-external-exe-from-windows-service-in-Cs</a></li>
+<li><a href="https://code.msdn.microsoft.com/windowsapps/CSCreateProcessAsUserFromSe-b682134e" target="_blank" rel="noopener">https://code.msdn.microsoft.com/windowsapps/CSCreateProcessAsUserFromSe-b682134e</a></li>
+<li><a href="https://stackoverflow.com/questions/46064343/how-to-handle-service-session-changes-with-topshelf" target="_blank" rel="noopener">https://stackoverflow.com/questions/46064343/how-to-handle-service-session-changes-with-topshelf</a></li>
+<li><a href="http://www.cnblogs.com/luxilin/p/3347212.html" target="_blank" rel="noopener">http://www.cnblogs.com/luxilin/p/3347212.html</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa380544(v=vs.85).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/en-us/library/windows/desktop/aa380544(v=vs.85).aspx</a></li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
